@@ -91,6 +91,7 @@ body {
   align-items: center;
   font-size: 18px;
   font-weight: 600;
+  cursor: pointer;
 }
 
 .pp_slide_2 .pp_element_7 {
@@ -107,6 +108,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .material-icons{
   padding: 1px;

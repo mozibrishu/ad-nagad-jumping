@@ -2,8 +2,8 @@ gsap.fromTo('.pp_slide_1 .pp_element_3', { scaleX: 1, scaleY: 1 }, { scaleX: 1.2
 document.querySelector(".pp_slide_1 .pp_element_3").addEventListener('click', () => {
   console.log('working');
   gsap.timeline()
-    .to('.pp_slide_1', { opacity: 0, duration: .5 })
-    .fromTo('.pp_slide_2', { opacity: .5, display: 'none' }, { opacity: 1, display: 'block', duration: .8 }, ">-.3");
+    .to('.pp_slide_1', { opacity: 0, duration: .8 })
+    .fromTo('.pp_slide_2', { opacity: .5, display: 'none' }, { opacity: 1, display: 'block', duration: 1 }, "<");
   setTimeout(() => {
     setCheckInterval();
     gameAnimation();
@@ -51,11 +51,20 @@ function setCheckInterval(params) {
     }
   }, 100);
 }
+function oneSetComplete() {
+  clearCheckInterval();
+  document.querySelector('.pp_slide_2').removeEventListener('click', jump);
+  gsap.fromTo(['.pp_slide_2 .pp_element_7','.pp_slide_2 .pp_element_6'], { scaleX: 1, scaleY: 1 }, { scaleX: 1.1, scaleY: 1.05, duration: 1.2, repeat: -1, yoyo: true });
+}
 
 function gameAnimation() {
-  t1 = gsap.timeline({ onComplete: clearCheckInterval, delay: 2.5 })
+  t1 = gsap.timeline({ onComplete: oneSetComplete, delay: 2 })
     .fromTo('.pp_slide_2 .pp_element_1', { x: 0 }, { x: -1920, duration: 20, ease: Linear.easeNone })
+    // man position change
     .to('.pp_slide_2 .pp_element_2', { x: 220, duration: 2.2, ease: Linear.easeNone }, 20)
+    // ending btn
+    .fromTo(['.pp_slide_2 .pp_element_7','.pp_slide_2 .pp_element_6'],{display:'none',opacity:0,scale:.5},{display:'flex',opacity:1,scale:1,duration:1,stagger:.2},"<1.2")
+    // tap text
     .fromTo('.pp_slide_2 .pp_element_4', { scaleX: 1, scaleY: 1, opacity: 1 }, { scaleX: 1.1, scaleY: 1.1, duration: .5, repeat: 2, yoyo: true }, -1.5)
     .fromTo('.pp_slide_2 .pp_element_4', { opacity: 1 }, { opacity: 0, display: "none", duration: .3 }, ">")
     // coin animation
@@ -82,7 +91,7 @@ function gameAnimation() {
     .to('.pp_slide_2 .pp_element_3', { opacity: 1, y: 0, x: -100, duration: 3, ease: Linear.easeNone }, '>.1')
     .to('.pp_slide_2 .pp_element_3', { opacity: 0, y: -20, duration: .5, ease: Linear.easeNone }, '>')
     // obstacle animation
-    .fromTo('.pp_slide_2 .pp_element_5', { left: 130 }, { left: 30, duration: 1, ease: Linear.easeNone }, 1.5)
+    .fromTo('.pp_slide_2 .pp_element_5', { left: 130,display:'none' }, { left: 30,display:'block', duration: 1, ease: Linear.easeNone }, 1.5)
     .to('.pp_slide_2 .pp_element_5', { left: 350, duration: .01, ease: Linear.easeNone },">.1")
     .fromTo('.pp_slide_2 .pp_element_5', { left: 350 }, { left: 30, duration: 3.2, ease: Linear.easeNone }, 4)
     .to('.pp_slide_2 .pp_element_5', { left: 350, duration: .01, ease: Linear.easeNone },">.1")
@@ -92,3 +101,11 @@ function gameAnimation() {
     .to('.pp_slide_2 .pp_element_5', { left: 350,display:'none', duration: .01, ease: Linear.easeNone },">.1")
 
 }
+
+document.querySelector('.pp_slide_2 .pp_element_6').addEventListener('click', ()=>{
+  gsap.to([".pp_slide_2 .pp_element_6",".pp_slide_2 .pp_element_7"],{display:'none',opacity:0,scale:.5,duration:.5})
+  gsap.to([".pp_slide_2 .pp_element_2"],{x:0,duration:.3})
+  setCheckInterval();
+  gameAnimation();
+  document.querySelector('.pp_slide_2').addEventListener('click', jump);
+});
