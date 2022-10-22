@@ -33,11 +33,11 @@ body {
   left: 56px;
 }
 
-.pp_logo{
+.pp_logo {
 
   top: 8px;
   left: 203px;
- z-index: 99;
+  z-index: 99;
 }
 
 .pp_slide_1 .pp_element_3 {
@@ -66,6 +66,7 @@ body {
   top: 132px;
   left: 186px;
 }
+
 .pp_slide_2 .pp_element_5 {
   top: 175px;
   left: 130px;
@@ -73,6 +74,42 @@ body {
   width: 22px;
   background-color: #aaaaff00;
   opacity: .9;
+}
+
+.pp_slide_2 .pp_element_6 {
+  top: 164px;
+  left: 80px;
+  height: 35px;
+  width: 120px;
+  background-color: #ec1e28;
+  border-radius: 20px;
+  color: #fff;
+  text-align: center;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.pp_slide_2 .pp_element_7 {
+  top: 120px;
+  left: 80px;
+  height: 35px;
+  width: 120px;
+  background-color: #ec1e28;
+  border-radius: 20px;
+  color: #fff;
+  text-align: center;
+  padding: 3px;font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.material-icons{
+  padding: 1px;
 }
 /* Utility class */
 .pp_absolute {
